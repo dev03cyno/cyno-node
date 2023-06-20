@@ -11,7 +11,7 @@ export const signup = async(req,res)=>{
             password,
             role
         } = req.body;
-        let hashPassword = await bcrypt.hash(req.body.password,10);
+        let hashPassword = await bcrypt.hash(password,10);
         const user = await prisma.user.create({
             data:{
                 name:name,
@@ -69,14 +69,3 @@ export const changePassword = async(req,res)=>{
         return res.status(500).json({message:err})
     }
 }
-
-// export const forgetPassword = async (req,res)=>{
-//     try{
-//         const {
-//             email,
-
-//         }
-//     }catch(err){
-//         return res.status(500).json({message:err})
-//     }
-// }
